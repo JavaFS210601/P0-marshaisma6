@@ -21,7 +21,7 @@ public class ConnectionUtil {
 		String password = "jcluforever6";
 		
 		return DriverManager.getConnection(url, username, password);
-		
+		 
 	}
 
 }

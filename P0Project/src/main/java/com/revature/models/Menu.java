@@ -2,6 +2,7 @@ package com.revature.models;
 
 import java.util.Scanner;
 
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,6 +17,7 @@ public class Menu {
 		boolean displayMenu = true;
 		Scanner scan = new Scanner(System.in);
 		CustomerDao daoImpli = new CustomerDao();
+		final Logger log = LogManager.getLogger(Menu.class);
 		
 		
 		//greeting
@@ -67,12 +69,13 @@ public class Menu {
 				System.out.println("-----------------------------------------------------");
 				String amount =scan.nextLine();
 				daoImpli.deposit(account_no,Integer.parseInt(amount));
-				//withdraw(amount2)
+				log.info("Customer has completed a new transaction");
 				System.out.println("\n");
 				break;
 			}	
 			
 			case "C" : {
+				
 				System.out.println("-----------------------------------------------------");
 				System.out.println("Please enter your account number: ");
 				String account_no_string = scan.nextLine();
@@ -84,6 +87,7 @@ public class Menu {
 				String amount =scan.nextLine();
 				daoImpli.withdraw(account_no,Integer.parseInt(amount));
 				//withdraw(amount2);
+				log.info("Customer has completed a new transaction");
 				System.out.println("\n");
 				break;
 			}
@@ -113,7 +117,8 @@ public class Menu {
 				daoImpli.brandNewCustomer(newCust);
 				System.out.println("Congratulations, you have been successfully added to our customer database!");
 				
-				System.out.println("\n");
+				System.out.println("\n"); 
+				log.info("A new customer has been registered");
 				break;
 			}
 			case "E" : {
